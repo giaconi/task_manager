@@ -4,17 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Task {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    private String slug;
+    @NotNull
     private String title;
+    @NotNull
+    private int duration;
 
-    public Task(String slug, String title) {
-        this.slug = slug;
+    public Task(int duration, String title) {
+        this.duration = duration;
         this.title = title;
     }
 
@@ -25,8 +28,8 @@ public class Task {
         return id;
     }
 
-    public String getSlug() {
-        return slug;
+    public int getDuration() {
+        return duration;
     }
 
     public String getTitle() {
@@ -37,8 +40,8 @@ public class Task {
         this.id = id;
     }
 
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public void setTitle(String title) {

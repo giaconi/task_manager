@@ -43,6 +43,7 @@ public class TasksController {
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + taskId));
 
         task.setTitle(taskDetails.getTitle());
+        task.setDuration(taskDetails.getDuration());
         final Task updatedTask = tasksRepository.save(task);
         return ResponseEntity.ok(updatedTask);
     }
